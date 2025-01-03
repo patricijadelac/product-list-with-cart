@@ -1,0 +1,33 @@
+@use './variables' as var;
+
+@mixin apply-text-styles($font-size, $font-weight, $line-height) {
+  font: {
+    size: $font-size;
+    weight: $font-weight;
+  }
+  line-height: $line-height;
+}
+
+@mixin text-preset-1 {
+  @include apply-text-styles(var.$font-size-l, var.$font-weight-bold, 1.2);
+}
+
+@mixin text-preset-2 {
+  @include apply-text-styles(var.$font-size-m, var.$font-weight-bold, 1.25);
+}
+
+@mixin text-preset-3 {
+  @include apply-text-styles(var.$font-size-s, var.$font-weight-semi-bold, 1.5);
+}
+
+@mixin text-preset-4 {
+  @include apply-text-styles(var.$font-size-xs, var.$font-weight-regular, 1.5);
+}
+
+@mixin text-preset-4-bold {
+  @include apply-text-styles(
+    var.$font-size-xs,
+    var.$font-weight-semi-bold,
+    1.5
+  );
+}

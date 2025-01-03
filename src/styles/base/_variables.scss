@@ -1,0 +1,26 @@
+@use './functions' as func;
+
+// --- Typography ---
+// Base font family
+$font-family-red-hat-text: 'Red Hat Text';
+
+// Font size definitions
+$font-size-xs: func.toRem(14);
+$font-size-s: func.toRem(16);
+$font-size-m: func.toRem(24);
+$font-size-l: func.toRem(40);
+
+// Font weight definitions
+$font-weight-regular: 400;
+$font-weight-semi-bold: 600;
+$font-weight-bold: 700;
+
+// --- Spacing ---
+$spacing-50: func.toRem(4);
+$spacing-100: func.toRem(8);
+$spacing-150: func.toRem(12);
+$spacing-200: func.toRem(16);
+$spacing-300: func.toRem(24);
+$spacing-400: func.toRem(32);
+$spacing-500: func.toRem(40);
+$spacing-1100: func.toRem(88);
