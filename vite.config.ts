@@ -8,6 +8,13 @@ import path from 'path';
 const scssPath = path.resolve(__dirname, './src/styles/lib.scss');
 
 export default defineConfig({
+  resolve: {
+    alias: {
+      '@assets': path.resolve(__dirname, 'src/assets'),
+      '@components': path.resolve(__dirname, 'src/components'),
+      '@types': path.resolve(__dirname, 'src/types/'),
+    },
+  },
   css: {
     modules: {
       localsConvention: 'dashesOnly', // Ensures class names follow the dashes-only convention
