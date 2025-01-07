@@ -1,0 +1,39 @@
+.product-item {
+  @include flex-column;
+  gap: $spacing-200;
+
+  &__imageContainer {
+    @include flex-center-column;
+  }
+
+  &__image {
+    width: 100%;
+    height: auto;
+    border-radius: $spacing-100;
+
+    &--with-border {
+      box-shadow: 0 0 0 2px $color-red;
+    }
+  }
+
+  &__addToCart {
+    display: flex;
+    align-items: stretch;
+    margin-top: toRem(-22);
+    min-width: toRem(160);
+  }
+
+  &__details {
+    @include flex-column;
+    gap: $spacing-50;
+  }
+
+  &__category {
+    @include text-preset-4;
+    color: $color-rose-500;
+  }
+
+  &__price {
+    color: $color-red;
+  }
+}

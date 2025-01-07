@@ -1,0 +1,70 @@
+.shopping-cart {
+  @include flex-column;
+  gap: $spacing-300;
+  padding: $spacing-300;
+  background-color: $color-white;
+  border-radius: $spacing-150;
+
+  &__heading {
+    color: $color-red;
+  }
+
+  &__list {
+    padding: 0;
+    list-style-type: none;
+  }
+
+  &__item {
+    padding-block: $spacing-200;
+    border-bottom: 1px solid $color-rose-100;
+
+    &:first-child {
+      padding-top: 0;
+    }
+
+    &:last-child {
+      padding-bottom: 0;
+      border: 0;
+    }
+  }
+
+  &__divider {
+    height: toRem(1);
+    color: $color-rose-100;
+    background-color: $color-rose-100;
+    border: none;
+  }
+
+  &__total {
+    @include flex-center;
+    justify-content: space-between;
+
+    &-label {
+      @include text-preset-4;
+    }
+
+    &-amount {
+      @include text-preset-2;
+    }
+  }
+
+  &__environmental-message {
+    @include flex-center;
+    gap: $spacing-100;
+    padding: $spacing-200;
+    @include text-preset-4;
+    background-color: $color-rose-50;
+    border-radius: $spacing-100;
+  }
+
+  &--empty {
+    padding-block: $spacing-200;
+    @include flex-center-column;
+    gap: $spacing-200;
+
+    &__message {
+      @include text-preset-4-bold;
+      color: $color-rose-500;
+    }
+  }
+}

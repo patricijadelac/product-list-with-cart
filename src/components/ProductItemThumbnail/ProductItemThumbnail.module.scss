@@ -1,0 +1,32 @@
+.product-item-thumbnail {
+  @include flex-center;
+  justify-content: space-between;
+
+  &__details {
+    @include flex-column;
+    gap: $spacing-100;
+  }
+
+  &__name {
+    @include text-preset-4-bold;
+  }
+
+  &__priceInfo {
+    @include flex-center-vert;
+    gap: $spacing-100;
+  }
+
+  &__quantity {
+    margin-right: $spacing-100;
+    @include text-preset-4-bold;
+    color: $color-red;
+  }
+
+  &__price {
+    @include text-preset-4;
+  }
+
+  &__total {
+    @include text-preset-4-bold;
+  }
+}

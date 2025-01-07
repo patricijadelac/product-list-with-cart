@@ -1,0 +1,22 @@
+.container {
+  display: grid;
+  gap: $spacing-400;
+  padding: $spacing-300;
+  max-width: toRem(1216);
+  margin-inline: auto;
+
+  @include respond-to('tablet') {
+    padding: $spacing-500;
+  }
+
+  @include respond-to('desktop') {
+    grid-template-columns: 1fr toRem(384);
+    align-items: start;
+    padding: $spacing-1100 0;
+  }
+
+  &__left {
+    @include flex-column;
+    gap: $spacing-400;
+  }
+}

@@ -1,11 +1,21 @@
 @use './reset';
 @use './lib';
-@use 'sass:map';
 
 body {
-  min-width: map.get($breakpoints, 'mobile');
   font-family: $font-family-red-hat-text, sans-serif;
   @include text-preset-3;
   color: $color-rose-900;
   background-color: $color-rose-50;
+}
+
+h1 {
+  @include text-preset-1;
+}
+
+h2 {
+  @include text-preset-2;
+}
+
+strong {
+  font-weight: $font-weight-semi-bold;
 }

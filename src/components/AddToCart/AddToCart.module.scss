@@ -1,0 +1,29 @@
+.add-to-cart {
+  flex: 1;
+  @include flex-center;
+  gap: toRem(8);
+  padding: $spacing-150;
+  width: 100%;
+  @include text-preset-4-bold;
+  border: none;
+  border-radius: toRem(999);
+
+  &__container {
+    justify-content: space-between;
+    color: $color-white;
+    background: $color-red;
+  }
+
+  &__button {
+    box-shadow: 0 0 0 1px $color-rose-400;
+    transition: $transition-ease;
+    cursor: pointer;
+
+    &:hover,
+    &:active,
+    &:focus {
+      color: $color-red;
+      box-shadow: inset 0 0 0 1px $color-red;
+    }
+  }
+}

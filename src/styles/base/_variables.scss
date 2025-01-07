@@ -24,3 +24,6 @@ $spacing-300: func.toRem(24);
 $spacing-400: func.toRem(32);
 $spacing-500: func.toRem(40);
 $spacing-1100: func.toRem(88);
+
+// --- Transition ---
+$transition-ease: all 0.3s ease;
