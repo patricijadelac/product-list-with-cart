@@ -1,50 +1,77 @@
-# React + TypeScript + Vite
+# Frontend Mentor - Product list with cart
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a solution to the [Product list with cart challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/product-list-with-cart-5MmqLVAp_d). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
-Currently, two official plugins are available:
+## Table of contents
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [Overview](#overview)
+  - [The challenge](#the-challenge)
+  - [Preview](#preview)
+  - [Links](#links)
+- [Project setup](#project-setup)
+- [Built with](#built-with)
+- [Author](#author)
 
-## Expanding the ESLint configuration
+## Overview
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### The challenge
 
-- Configure the top-level `parserOptions` property like this:
+Users should be able to:
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+- Add items to the cart and remove them
+- Increase/decrease the number of items in the cart
+- See an order confirmation modal when they click "Confirm Order"
+- Reset their selections when they click "Start New Order"
+- View the optimal layout for the interface depending on their device's screen size
+- See hover and focus states for all interactive elements on the page
+
+### Preview
+
+![Desktop preview](./public/desktop-preview.jpg)
+
+### Links
+
+- Solution URL: [GitHub Repository](https://github.com/patricijadelac/product-list-with-cart)
+- Live Site URL: [GitHub Pages](https://patricijadelac.github.io/product-list-with-cart/)
+
+## Project setup
+
+To get this project up and running locally, follow the steps below.
+
+1. Clone the repository:
+
+```bash
+  git clone https://github.com/patricijadelac/product-list-with-cart
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+2. Navigate into the project directory:
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+```bash
+  cd product-list-with-cart
 ```
+
+3. Install the required dependencies:
+
+```bash
+  npm install
+```
+
+4. Start the development server:
+
+```bash
+  npm run dev
+```
+
+5. Open your browser and go to http://localhost:5173/product-list-with-cart/ to view the project.
+
+## Built with
+
+- [React](https://reactjs.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Sass](https://sass-lang.com/)
+- [Zustand](https://zustand-demo.pmnd.rs/)
+- Mobile-first workflow
+
+## Author
+
+- Frontend Mentor - [@patricijadelac](https://www.frontendmentor.io/profile/patricijadelac)
