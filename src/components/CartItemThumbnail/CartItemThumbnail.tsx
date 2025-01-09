@@ -1,40 +1,41 @@
 import Button from '@components/Button/Button';
 import { useOrderStore } from '@store/orderStore';
 import { ProductItemProps } from '@types';
-import styles from './ProductItemThumbnail.module.scss';
+import styles from './CartItemThumbnail.module.scss';
 
-interface OrderedItemProps extends Pick<ProductItemProps, 'name' | 'price'> {
+interface CartItemThumbnailProps
+  extends Pick<ProductItemProps, 'name' | 'price'> {
   quantity: number;
 }
 
-export default function ProductItemThumbnail({
+export default function CartItemThumbnail({
   name,
   quantity,
   price,
-}: OrderedItemProps) {
+}: CartItemThumbnailProps) {
   const { removeProductFromOrder } = useOrderStore();
   const total = quantity * price;
 
   return (
-    <article className={styles.productItemThumbnail}>
-      <section className={styles.productItemThumbnail__details}>
-        <h3 className={styles.productItemThumbnail__name}>{name}</h3>
+    <article className={styles.cartItemThumbnail}>
+      <section className={styles.cartItemThumbnail__details}>
+        <h3 className={styles.cartItemThumbnail__name}>{name}</h3>
 
-        <p className={styles.productItemThumbnail__priceInfo}>
+        <p className={styles.cartItemThumbnail__priceInfo}>
           <span
-            className={styles.productItemThumbnail__quantity}
+            className={styles.cartItemThumbnail__quantity}
             aria-label={`Quantity: ${quantity}`}
           >
             {`${quantity}x`}
           </span>
           <span
-            className={styles.productItemThumbnail__price}
+            className={styles.cartItemThumbnail__price}
             aria-label={`Price per unit: $${price}`}
           >
             {`@ $${price.toFixed(2)}`}
           </span>
           <span
-            className={styles.productItemThumbnail__total}
+            className={styles.cartItemThumbnail__total}
             aria-label={`Total: $${total.toFixed(2)}`}
           >
             {`$${total.toFixed(2)}`}

@@ -1,0 +1,5 @@
+.cart-item-thumbnail {
+  @include flex-center;
+  justify-content: space-between;
+  @include item-thumbnail-base;
+}

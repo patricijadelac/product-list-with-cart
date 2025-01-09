@@ -1,3 +1,4 @@
+import OrderConfirmationModal from '@components/OrderConfirmationModal/OrderConfirmationModal';
 import ProductList from '@components/ProductList/ProductList';
 import ShoppingCart from '@components/ShoppingCart/ShoppingCart';
 import { ProductItemProps } from '@types';
@@ -6,6 +7,7 @@ import styles from './Home.module.scss';
 
 export default function Home() {
   const [products, setProducts] = useState<ProductItemProps[]>([]);
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
   const fetchJson = () => {
     fetch('./data.json')
@@ -24,7 +26,13 @@ export default function Home() {
         <h1>Desserts</h1>
         <ProductList products={products} />
       </div>
-      <ShoppingCart />
+
+      <ShoppingCart onOpenModal={() => setIsModalOpen(true)} />
+
+      <OrderConfirmationModal
+        isOpen={isModalOpen}
+        onCloseModal={() => setIsModalOpen(false)}
+      />
     </main>
   );
 }

@@ -1,12 +1,16 @@
 import iconTree from '@assets/images/icon-carbon-neutral.svg';
 import iconEmptyCart from '@assets/images/illustration-empty-cart.svg';
 import Button from '@components/Button/Button';
-import ProductItemThumbnail from '@components/ProductItemThumbnail/ProductItemThumbnail';
+import CartItemThumbnail from '@components/CartItemThumbnail/CartItemThumbnail';
 import { useOrderStore } from '@store/orderStore';
 import { useMemo } from 'react';
 import styles from './ShoppingCart.module.scss';
 
-export default function ShoppingCart() {
+export default function ShoppingCart({
+  onOpenModal,
+}: {
+  onOpenModal: () => void;
+}) {
   const { order } = useOrderStore();
 
   const totalAmount = useMemo(
@@ -19,10 +23,6 @@ export default function ShoppingCart() {
     [order]
   );
 
-  const handleConfirmOrder = () => {
-    window.alert('Order confirmed');
-  };
-
   return (
     <section className={styles.shoppingCart}>
       <h2 className={styles.shoppingCart__heading}>
@@ -34,7 +34,7 @@ export default function ShoppingCart() {
           <ul className={styles.shoppingCart__list}>
             {order.map((item) => (
               <li className={styles.shoppingCart__item} key={item.name}>
-                <ProductItemThumbnail {...item} />
+                <CartItemThumbnail {...item} />
               </li>
             ))}
           </ul>
@@ -66,7 +66,7 @@ export default function ShoppingCart() {
 
           <Button
             variant="default"
-            onClick={handleConfirmOrder}
+            onClick={onOpenModal}
             label="Confirm Order"
           />
         </>

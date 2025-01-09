@@ -1,3 +1,4 @@
+@use './colors' as c;
 @use './variables' as var;
 
 @mixin apply-text-styles($font-size, $font-weight, $line-height) {
@@ -56,4 +57,79 @@
 @mixin flex-center-horiz {
   display: flex;
   justify-content: center;
+}
+
+@mixin list-style-none {
+  padding: 0;
+  list-style-type: none;
+}
+
+@mixin list-base {
+  &__list {
+    @include list-style-none;
+  }
+
+  &__item {
+    padding-block: var.$spacing-200;
+    border-bottom: 1px solid c.$color-rose-100;
+
+    &:first-child {
+      padding-top: 0;
+    }
+
+    &:last-child {
+      padding-bottom: 0;
+      border: 0;
+    }
+  }
+
+  &__divider {
+    height: 1px;
+    color: c.$color-rose-100;
+    background-color: c.$color-rose-100;
+    border: none;
+  }
+
+  &__total {
+    @include flex-center;
+    justify-content: space-between;
+
+    &-label {
+      @include text-preset-4;
+    }
+
+    &-amount {
+      @include text-preset-2;
+    }
+  }
+}
+
+@mixin item-thumbnail-base {
+  &__details {
+    @include flex-column;
+    gap: var.$spacing-100;
+  }
+
+  &__name {
+    @include text-preset-4-bold;
+  }
+
+  &__price-info {
+    @include flex-center-vert;
+    gap: var.$spacing-100;
+  }
+
+  &__quantity {
+    margin-right: var.$spacing-100;
+    @include text-preset-4-bold;
+    color: c.$color-red;
+  }
+
+  &__price {
+    @include text-preset-4;
+  }
+
+  &__total {
+    @include text-preset-4-bold;
+  }
 }
