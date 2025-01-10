@@ -7,7 +7,7 @@ import styles from './Home.module.scss';
 
 export default function Home() {
   const [products, setProducts] = useState<ProductItemProps[]>([]);
-  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const fetchJson = () => {
     fetch('./data.json')
