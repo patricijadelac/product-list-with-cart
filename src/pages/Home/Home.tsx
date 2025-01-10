@@ -9,6 +9,14 @@ export default function Home() {
   const [products, setProducts] = useState<ProductItemProps[]>([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
   const fetchProducts = () => {
     fetch('./data.json')
       .then((resp) => resp.json())
@@ -29,11 +37,11 @@ export default function Home() {
         <ProductList products={products} />
       </div>
 
-      <ShoppingCart onOpenModal={() => setIsModalOpen(true)} />
+      <ShoppingCart onOpenModal={handleOpenModal} />
 
       <OrderConfirmationModal
         isOpen={isModalOpen}
-        onCloseModal={() => setIsModalOpen(false)}
+        onCloseModal={handleCloseModal}
       />
     </main>
   );
