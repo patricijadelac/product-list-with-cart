@@ -9,15 +9,17 @@ export default function Home() {
   const [products, setProducts] = useState<ProductItemProps[]>([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const fetchJson = () => {
+  const fetchProducts = () => {
     fetch('./data.json')
       .then((resp) => resp.json())
       .then((data) => setProducts(data))
-      .catch((e: Error) => console.error(e.message));
+      .catch((e: Error) => {
+        console.error('Error fetching products:', e.message);
+      });
   };
 
   useEffect(() => {
-    fetchJson();
+    fetchProducts();
   }, []);
 
   return (
