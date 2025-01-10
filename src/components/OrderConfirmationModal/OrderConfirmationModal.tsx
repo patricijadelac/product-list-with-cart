@@ -6,7 +6,7 @@ import clsx from 'clsx';
 import { useEffect } from 'react';
 import styles from './OrderConfirmationModal.module.scss';
 
-interface modalProps {
+interface ModalProps {
   isOpen: boolean;
   onCloseModal: () => void;
 }
@@ -14,7 +14,7 @@ interface modalProps {
 export default function OrderConfirmationModal({
   isOpen,
   onCloseModal,
-}: modalProps) {
+}: ModalProps) {
   const { order, clearOrder } = useOrderStore();
   const totalAmount = order.reduce(
     (sum, item) => sum + item.quantity * item.price,
@@ -59,7 +59,7 @@ export default function OrderConfirmationModal({
         <div className={styles.modal__header}>
           <img
             src={iconOrderConfirmed}
-            alt="Check icon"
+            alt="Order confirmed icon"
             width={48}
             height={48}
             className={styles.modal__icon}
