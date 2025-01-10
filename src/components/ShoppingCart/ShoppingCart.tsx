@@ -6,19 +6,20 @@ import { useOrderStore } from '@store/orderStore';
 import { useMemo } from 'react';
 import styles from './ShoppingCart.module.scss';
 
-export default function ShoppingCart({
-  onOpenModal,
-}: {
+interface ShoppingCartProps {
   onOpenModal: () => void;
-}) {
-  const { order } = useOrderStore();
+}
 
-  const totalAmount = useMemo(
+export default function ShoppingCart({ onOpenModal }: ShoppingCartProps) {
+  const { order } = useOrderStore();
+  const isCartEmpty = order.length === 0;
+
+  const calculateTotalAmount = useMemo(
     () => order.reduce((sum, item) => sum + item.quantity * item.price, 0),
     [order]
   );
 
-  const totalItemsInCart = useMemo(
+  const calculateTotalItems = useMemo(
     () => order.reduce((sum, item) => sum + item.quantity, 0),
     [order]
   );
@@ -26,10 +27,23 @@ export default function ShoppingCart({
   return (
     <section className={styles.shoppingCart}>
       <h2 className={styles.shoppingCart__heading}>
-        {`Your Cart (${totalItemsInCart})`}
+        {`Your Cart (${calculateTotalItems})`}
       </h2>
 
-      {order.length > 0 ? (
+      {isCartEmpty ? (
+        <div className={styles.shoppingCartEmpty}>
+          <img
+            src={iconEmptyCart}
+            alt="Empty cart illustration"
+            width={128}
+            height={128}
+            aria-hidden="true"
+          />
+          <p className={styles.shoppingCartEmpty__message}>
+            Your added items will appear here
+          </p>
+        </div>
+      ) : (
         <>
           <ul className={styles.shoppingCart__list}>
             {order.map((item) => (
@@ -45,9 +59,9 @@ export default function ShoppingCart({
             <p className={styles.shoppingCart__totalLabel}>Order Total</p>
             <p
               className={styles.shoppingCart__totalAmount}
-              aria-label={`Order total is $${totalAmount.toFixed(2)}`}
+              aria-label={`Order total is $${calculateTotalAmount.toFixed(2)}`}
             >
-              ${totalAmount.toFixed(2)}
+              ${calculateTotalAmount.toFixed(2)}
             </p>
           </div>
 
@@ -70,19 +84,6 @@ export default function ShoppingCart({
             label="Confirm Order"
           />
         </>
-      ) : (
-        <div className={styles.shoppingCartEmpty}>
-          <img
-            src={iconEmptyCart}
-            alt="Illustration of a cake with a slice removed"
-            width={128}
-            height={128}
-            aria-hidden="true"
-          />
-          <p className={styles.shoppingCartEmpty__message}>
-            Your added items will appear here
-          </p>
-        </div>
       )}
     </section>
   );
