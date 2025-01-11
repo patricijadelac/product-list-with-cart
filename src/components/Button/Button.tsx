@@ -28,11 +28,10 @@ const buttonIcons: Record<Exclude<ButtonVariant, 'default'>, JSX.Element> = {
   ),
 };
 
-const buttonAltText: Record<ButtonVariant, string> = {
-  incrementQuantity: 'Increment quantity',
-  decrementQuantity: 'Decrement quantity',
+const buttonAltText: Record<Exclude<ButtonVariant, 'default'>, string> = {
+  incrementQuantity: 'Increment quantity for one item',
+  decrementQuantity: 'Decrement quantity for one item',
   removeItem: 'Remove item from cart',
-  default: '',
 };
 
 export default function Button({ variant, onClick, label }: ButtonProps) {
@@ -47,9 +46,9 @@ export default function Button({ variant, onClick, label }: ButtonProps) {
     <button
       className={buttonClasses}
       onClick={onClick}
-      aria-label={buttonLabel}
+      aria-label={isDefault ? undefined : buttonLabel}
     >
-      {isDefault ? label : buttonIcons[variant]}
+      {variant === 'default' ? label : buttonIcons[variant]}
     </button>
   );
 }
