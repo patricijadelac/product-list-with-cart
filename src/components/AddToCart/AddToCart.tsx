@@ -14,34 +14,30 @@ export default function AddToCart({
   onRemove,
   quantity,
 }: AddToCartProps) {
-  return (
-    <>
-      {quantity > 0 ? (
-        <div className={clsx(styles.addToCart, styles.addToCart__container)}>
-          <Button variant="decrementQuantity" onClick={onRemove} />
-          <p
-            aria-label="Current quantity of this product"
-            className={styles.addToCart__quantity}
-          >
-            {quantity}
-          </p>
-          <Button variant="incrementQuantity" onClick={onAdd} />
-        </div>
-      ) : (
-        <button
-          className={clsx(styles.addToCart, styles.addToCart__button)}
-          onClick={onAdd}
-        >
-          <img
-            src={iconAddToCart}
-            alt="Shopping cart"
-            width={20}
-            height={20}
-            aria-hidden="true"
-          />
-          Add to Cart
-        </button>
-      )}
-    </>
+  return quantity > 0 ? (
+    <div className={clsx(styles.addToCart, styles.addToCart__container)}>
+      <Button variant="decrementQuantity" onClick={onRemove} />
+      <p
+        className={styles.addToCart__quantity}
+        aria-label={`Current quantity of this product: ${quantity}`}
+      >
+        {quantity}
+      </p>
+      <Button variant="incrementQuantity" onClick={onAdd} />
+    </div>
+  ) : (
+    <button
+      className={clsx(styles.addToCart, styles.addToCart__button)}
+      onClick={onAdd}
+    >
+      <img
+        src={iconAddToCart}
+        alt="Shopping cart"
+        width={20}
+        height={20}
+        aria-hidden="true"
+      />
+      Add to Cart
+    </button>
   );
 }
