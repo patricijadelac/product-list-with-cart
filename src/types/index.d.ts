@@ -17,3 +17,7 @@ export interface OrderedItemProps {
   price: ProductItemProps.price;
   quantity: number;
 }
+
+export interface OrderProductProps extends ProductItemProps {
+  quantity: number;
+}

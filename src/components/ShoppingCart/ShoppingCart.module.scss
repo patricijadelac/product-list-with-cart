@@ -9,8 +9,6 @@
     color: $color-red;
   }
 
-  @include list-base;
-
   &__environmental-message {
     @include flex-center;
     gap: $spacing-100;

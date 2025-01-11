@@ -30,7 +30,7 @@
     transform: translateY(-100%);
     animation: slide-up 0.3s ease;
     animation-fill-mode: forwards;
-    overflow: scroll;
+    overflow: auto;
     z-index: 2;
 
     @include respond-to('tablet') {
@@ -58,11 +58,9 @@
     color: $color-rose-500;
   }
 
-  &__listContainer {
+  &__list-container {
     padding: $spacing-300;
     background-color: $color-rose-50;
     border-radius: $spacing-100;
   }
-
-  @include list-base;
 }

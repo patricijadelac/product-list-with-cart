@@ -1,9 +1,5 @@
-import { ProductItemProps } from '@types';
+import { OrderProductProps } from '@types';
 import { create } from 'zustand';
-
-interface OrderProductProps extends ProductItemProps {
-  quantity: number;
-}
 
 interface OrderState {
   order: OrderProductProps[];

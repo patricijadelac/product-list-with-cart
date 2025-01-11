@@ -64,46 +64,6 @@
   list-style-type: none;
 }
 
-@mixin list-base {
-  &__list {
-    @include list-style-none;
-  }
-
-  &__item {
-    padding-block: var.$spacing-200;
-    border-bottom: 1px solid c.$color-rose-100;
-
-    &:first-child {
-      padding-top: 0;
-    }
-
-    &:last-child {
-      padding-bottom: 0;
-      border: 0;
-    }
-  }
-
-  &__divider {
-    height: 1px;
-    color: c.$color-rose-100;
-    background-color: c.$color-rose-100;
-    border: none;
-  }
-
-  &__total {
-    @include flex-center;
-    justify-content: space-between;
-
-    &-label {
-      @include text-preset-4;
-    }
-
-    &-amount {
-      @include text-preset-2;
-    }
-  }
-}
-
 @mixin item-thumbnail-base {
   &__details {
     @include flex-column;

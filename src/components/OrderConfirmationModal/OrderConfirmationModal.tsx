@@ -1,7 +1,9 @@
 import iconOrderConfirmed from '@assets/images/icon-order-confirmed.svg';
 import Button from '@components/Button/Button';
 import OrderItemThumbnail from '@components/OrderItemThumbnail/OrderItemThumbnail';
+import OrderSummaryDetails from '@components/OrderSummaryDetails/OrderSummaryDetails';
 import { useOrderStore } from '@store/orderStore';
+import { OrderProductProps } from '@types';
 import clsx from 'clsx';
 import { useEffect } from 'react';
 import styles from './OrderConfirmationModal.module.scss';
@@ -19,6 +21,15 @@ export default function OrderConfirmationModal({
   const totalAmount = order.reduce(
     (sum, item) => sum + item.quantity * item.price,
     0
+  );
+
+  const renderItem = ({ name, image, price, quantity }: OrderProductProps) => (
+    <OrderItemThumbnail
+      imageSrc={image.thumbnail}
+      name={name}
+      price={price}
+      quantity={quantity}
+    />
   );
 
   const handleCloseModal = () => {
@@ -73,30 +84,11 @@ export default function OrderConfirmationModal({
 
         {order.length > 0 && (
           <div className={styles.modal__listContainer}>
-            <ul className={styles.modal__list}>
-              {order.map(({ name, image, price, quantity }) => (
-                <li className={styles.modal__item} key={name}>
-                  <OrderItemThumbnail
-                    imageSrc={image.thumbnail}
-                    name={name}
-                    price={price}
-                    quantity={quantity}
-                  />
-                </li>
-              ))}
-            </ul>
-
-            <hr className={styles.modal__divider} />
-
-            <div className={styles.modal__total}>
-              <p className={styles.modal__totalLabel}>Order Total</p>
-              <p
-                className={styles.modal__totalAmount}
-                aria-label={`Order total is $${totalAmount.toFixed(2)}`}
-              >
-                ${totalAmount.toFixed(2)}
-              </p>
-            </div>
+            <OrderSummaryDetails
+              items={order}
+              renderItem={renderItem}
+              totalAmount={totalAmount}
+            />
           </div>
         )}
 

@@ -2,7 +2,9 @@ import iconTree from '@assets/images/icon-carbon-neutral.svg';
 import iconEmptyCart from '@assets/images/illustration-empty-cart.svg';
 import Button from '@components/Button/Button';
 import CartItemThumbnail from '@components/CartItemThumbnail/CartItemThumbnail';
+import OrderSummaryDetails from '@components/OrderSummaryDetails/OrderSummaryDetails';
 import { useOrderStore } from '@store/orderStore';
+import { OrderProductProps } from '@types';
 import { useMemo } from 'react';
 import styles from './ShoppingCart.module.scss';
 
@@ -14,12 +16,16 @@ export default function ShoppingCart({ onOpenModal }: ShoppingCartProps) {
   const { order } = useOrderStore();
   const isCartEmpty = order.length === 0;
 
-  const calculateTotalAmount = useMemo(
+  const renderItem = (item: OrderProductProps) => (
+    <CartItemThumbnail {...item} />
+  );
+
+  const totalAmount = useMemo(
     () => order.reduce((sum, item) => sum + item.quantity * item.price, 0),
     [order]
   );
 
-  const calculateTotalItems = useMemo(
+  const totalItems = useMemo(
     () => order.reduce((sum, item) => sum + item.quantity, 0),
     [order]
   );
@@ -27,7 +33,7 @@ export default function ShoppingCart({ onOpenModal }: ShoppingCartProps) {
   return (
     <section className={styles.shoppingCart}>
       <h2 className={styles.shoppingCart__heading}>
-        {`Your Cart (${calculateTotalItems})`}
+        {`Your Cart (${totalItems})`}
       </h2>
 
       {isCartEmpty ? (
@@ -45,25 +51,11 @@ export default function ShoppingCart({ onOpenModal }: ShoppingCartProps) {
         </div>
       ) : (
         <>
-          <ul className={styles.shoppingCart__list}>
-            {order.map((item) => (
-              <li className={styles.shoppingCart__item} key={item.name}>
-                <CartItemThumbnail {...item} />
-              </li>
-            ))}
-          </ul>
-
-          <hr className={styles.shoppingCart__divider} />
-
-          <div className={styles.shoppingCart__total}>
-            <p className={styles.shoppingCart__totalLabel}>Order Total</p>
-            <p
-              className={styles.shoppingCart__totalAmount}
-              aria-label={`Order total is $${calculateTotalAmount.toFixed(2)}`}
-            >
-              ${calculateTotalAmount.toFixed(2)}
-            </p>
-          </div>
+          <OrderSummaryDetails
+            items={order}
+            renderItem={renderItem}
+            totalAmount={totalAmount}
+          />
 
           <div className={styles.shoppingCart__environmentalMessage}>
             <img
