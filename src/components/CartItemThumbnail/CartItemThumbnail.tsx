@@ -30,7 +30,7 @@ export default function CartItemThumbnail({
           </span>
           <span
             className={styles.cartItemThumbnail__price}
-            aria-label={`Price per unit: $${price}`}
+            aria-label={`Price per unit: $${price.toFixed(2)}`}
           >
             {`@ $${price.toFixed(2)}`}
           </span>
