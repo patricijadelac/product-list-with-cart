@@ -1,7 +1,8 @@
 import { ProductItemProps } from '@types';
 import styles from './OrderItemThumbnail.module.scss';
 
-interface OrderedItemProps extends Pick<ProductItemProps, 'name' | 'price'> {
+interface OrderItemThumbnailProps
+  extends Pick<ProductItemProps, 'name' | 'price'> {
   imageSrc: string;
   quantity: number;
 }
@@ -11,18 +12,17 @@ export default function OrderItemThumbnail({
   name,
   quantity,
   price,
-}: OrderedItemProps) {
-  const total = quantity * price;
+}: OrderItemThumbnailProps) {
+  const total = (quantity * price).toFixed(2);
 
   return (
     <article className={styles.orderItemThumbnail}>
       <img
         src={imageSrc}
-        alt={name}
+        alt={`Image of ${name}`}
         width={48}
         height={48}
         className={styles.orderItemThumbnail__image}
-        aria-hidden={true}
       />
 
       <section className={styles.orderItemThumbnail__details}>
@@ -37,7 +37,7 @@ export default function OrderItemThumbnail({
           </span>
           <span
             className={styles.orderItemThumbnail__price}
-            aria-label={`Price per unit: $${price}`}
+            aria-label={`Price per unit: $${price.toFixed(2)}`}
           >
             {`@ $${price.toFixed(2)}`}
           </span>
@@ -46,9 +46,9 @@ export default function OrderItemThumbnail({
 
       <p
         className={styles.orderItemThumbnail__total}
-        aria-label={`Total: $${total.toFixed(2)}`}
+        aria-label={`Total: $${total}`}
       >
-        {`$${total.toFixed(2)}`}
+        {`$${total}`}
       </p>
     </article>
   );
