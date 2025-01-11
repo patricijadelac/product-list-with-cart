@@ -5,25 +5,25 @@ import clsx from 'clsx';
 import styles from './ProductItem.module.scss';
 
 export default function ProductItem({
-  product,
+  product: { name, category, price, image },
 }: {
   product: ProductItemProps;
 }) {
   const { order, increaseProductQuantity, decreaseProductQuantity } =
     useOrderStore();
 
-  const productInOrder = order.find((item) => item.name === product.name);
-  const quantityInOrder = productInOrder ? productInOrder.quantity : 0;
+  const productInOrder = order.find((item) => item.name === name);
+  const quantityInOrder = productInOrder?.quantity || 0;
 
   return (
     <div className={styles.productItem}>
       <div className={styles.productItem__imageContainer}>
         <picture>
-          <source media="(min-width: 1440px)" srcSet={product.image.desktop} />
-          <source media="(min-width: 768px)" srcSet={product.image.tablet} />
+          <source media="(min-width: 1440px)" srcSet={image.desktop} />
+          <source media="(min-width: 768px)" srcSet={image.tablet} />
           <img
-            src={product.image.mobile}
-            alt={product.name}
+            src={image.mobile}
+            alt={name}
             className={clsx(
               styles.productItem__image,
               quantityInOrder > 0 && styles.productItem__imageWithBorder
@@ -34,20 +34,24 @@ export default function ProductItem({
         <div className={styles.productItem__addToCart}>
           <AddToCart
             onAdd={() =>
-              increaseProductQuantity({ ...product, quantity: quantityInOrder })
+              increaseProductQuantity({
+                name,
+                category,
+                price,
+                image,
+                quantity: quantityInOrder,
+              })
             }
-            onRemove={() => decreaseProductQuantity(product.name)}
+            onRemove={() => decreaseProductQuantity(name)}
             quantity={quantityInOrder}
           />
         </div>
       </div>
 
       <div className={styles.productItem__details}>
-        <span className={styles.productItem__category}>{product.category}</span>
-        {product.name}
-        <span className={styles.productItem__price}>
-          ${product.price.toFixed(2)}
-        </span>
+        <span className={styles.productItem__category}>{category}</span>
+        {name}
+        <span className={styles.productItem__price}>${price.toFixed(2)}</span>
       </div>
     </div>
   );
