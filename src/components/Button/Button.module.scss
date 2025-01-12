@@ -3,7 +3,7 @@
   transition: $transition-ease;
 
   &--default {
-    padding: toRem(16) toRem(24);
+    padding: $spacing-200 $spacing-300;
     color: $color-white;
     background-color: $color-red;
     border: none;

@@ -33,6 +33,13 @@
   );
 }
 
+@mixin line-clamp($lines) {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: $lines;
+  overflow: hidden;
+}
+
 @mixin flex-column {
   display: flex;
   flex-direction: column;
@@ -54,11 +61,6 @@
   align-items: center;
 }
 
-@mixin flex-center-horiz {
-  display: flex;
-  justify-content: center;
-}
-
 @mixin list-style-none {
   padding: 0;
   list-style-type: none;
@@ -72,6 +74,7 @@
 
   &__name {
     @include text-preset-4-bold;
+    @include line-clamp(1);
   }
 
   &__price-info {
@@ -87,9 +90,5 @@
 
   &__price {
     @include text-preset-4;
-  }
-
-  &__total {
-    @include text-preset-4-bold;
   }
 }

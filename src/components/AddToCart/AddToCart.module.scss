@@ -1,7 +1,7 @@
 .add-to-cart {
   flex: 1;
   @include flex-center;
-  gap: toRem(8);
+  gap: $spacing-100;
   padding: $spacing-150;
   width: 100%;
   @include text-preset-4-bold;

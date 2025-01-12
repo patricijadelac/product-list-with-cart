@@ -1,14 +1,16 @@
 .order-item-thumbnail {
   @include flex-center;
-  justify-content: start;
-  gap: $spacing-200;
+  gap: $spacing-100;
   @include item-thumbnail-base;
 
   &__image {
+    margin-right: $spacing-100;
     border-radius: $spacing-50;
+    object-fit: cover;
   }
 
   &__total {
     margin-left: auto;
+    @include text-preset-3;
   }
 }

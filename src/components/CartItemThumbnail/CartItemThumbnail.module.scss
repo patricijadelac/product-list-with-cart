@@ -2,4 +2,8 @@
   @include flex-center;
   justify-content: space-between;
   @include item-thumbnail-base;
+
+  &__total {
+    @include text-preset-4-bold;
+  }
 }
