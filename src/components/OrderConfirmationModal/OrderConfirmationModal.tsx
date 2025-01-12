@@ -68,36 +68,38 @@ export default function OrderConfirmationModal({
         role="dialog"
         aria-labelledby="order-confirmation-title"
       >
-        <div className={styles.modal__header}>
-          <img
-            src={iconOrderConfirmed}
-            alt="Order confirmed icon"
-            width={48}
-            height={48}
-            className={styles.modal__icon}
-            aria-hidden="true"
-          />
-          <h2 id="order-confirmation-title" className={styles.modal__title}>
-            Order Confirmed
-          </h2>
-          <p className={styles.modal__label}>We hope you enjoy your food!</p>
-        </div>
-
-        {order.length > 0 && (
-          <div className={styles.modal__listContainer}>
-            <OrderSummaryDetails
-              items={order}
-              renderItem={renderItem}
-              totalAmount={totalAmount}
+        <div className={styles.modal__content}>
+          <div className={styles.modal__header}>
+            <img
+              src={iconOrderConfirmed}
+              alt="Order confirmed icon"
+              width={48}
+              height={48}
+              className={styles.modal__icon}
+              aria-hidden="true"
             />
+            <h2 id="order-confirmation-title" className={styles.modal__title}>
+              Order Confirmed
+            </h2>
+            <p className={styles.modal__label}>We hope you enjoy your food!</p>
           </div>
-        )}
 
-        <Button
-          variant="default"
-          onClick={handleCloseModal}
-          label="Start New Order"
-        />
+          {order.length > 0 && (
+            <div className={styles.modal__listContainer}>
+              <OrderSummaryDetails
+                items={order}
+                renderItem={renderItem}
+                totalAmount={totalAmount}
+              />
+            </div>
+          )}
+
+          <Button
+            variant="default"
+            onClick={handleCloseModal}
+            label="Start New Order"
+          />
+        </div>
       </div>
     </div>
   );
