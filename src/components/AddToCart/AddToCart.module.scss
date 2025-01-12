@@ -15,6 +15,7 @@
   }
 
   &__button {
+    background: $color-white;
     box-shadow: 0 0 0 1px $color-rose-400;
     transition: $transition-ease;
     cursor: pointer;
