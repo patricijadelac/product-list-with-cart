@@ -4,12 +4,24 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
 import svgr from 'vite-plugin-svgr';
+import { viteStaticCopy } from 'vite-plugin-static-copy';
 
 // Path to the global SCSS file
 const scssPath = path.resolve(__dirname, './src/styles/lib.scss');
 
 export default defineConfig({
-  plugins: [react(), svgr()],
+  plugins: [
+    react(),
+    svgr(),
+    viteStaticCopy({
+      targets: [
+        {
+          src: 'src/assets/images/*', // Copies all images
+          dest: 'assets/images', // Places them in the 'dist/assets/images' directory
+        },
+      ],
+    }),
+  ],
   resolve: {
     alias: {
       '@assets': path.resolve(__dirname, 'src/assets'),
@@ -30,4 +42,5 @@ export default defineConfig({
     },
     devSourcemap: true, // Enable source maps for CSS
   },
+  base: '/product-list-with-cart/',
 });
