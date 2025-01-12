@@ -60,7 +60,8 @@ export default function OrderConfirmationModal({
       <div
         className={styles.modal__overlay}
         onClick={onCloseModal}
-        aria-hidden="true"
+        role="button"
+        aria-label="Close the order confirmation modal"
       />
 
       <div
