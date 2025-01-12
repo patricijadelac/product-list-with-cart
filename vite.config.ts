@@ -28,5 +28,6 @@ export default defineConfig({
         additionalData: `@use "${scssPath}" as *;`,
       },
     },
+    devSourcemap: true, // Enable source maps for CSS
   },
 });
