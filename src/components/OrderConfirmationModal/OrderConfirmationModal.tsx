@@ -35,6 +35,7 @@ export default function OrderConfirmationModal({
   const handleCloseModal = () => {
     clearOrder();
     onCloseModal();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   // Lock body scroll when modal is open
